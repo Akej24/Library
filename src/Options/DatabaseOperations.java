@@ -1,10 +1,13 @@
+package Options;
+
+import Start.DatabaseConnection;
+
 import java.sql.*;
-import java.util.Date;
 
 public class DatabaseOperations {
     private static final Connection databaseConnection = DatabaseConnection.getConnection();
 
-    public static String create(String title, String author, String releaseDate, int numberOfPages, int price) {
+    protected static String create(String title, String author, String releaseDate, int numberOfPages, int price) {
         try{
             Statement create = databaseConnection.createStatement();
             create.executeUpdate("INSERT INTO library(title, author, releaseDate, numberOfPages, price) " +
@@ -15,7 +18,7 @@ public class DatabaseOperations {
         }
     }
 
-    public static String deleteById(int id) {
+    protected  static String deleteById(int id) {
         try {
             Statement deleteById = databaseConnection.createStatement();
             deleteById.executeUpdate("DELETE FROM library WHERE id IN("+id+");");
@@ -25,7 +28,7 @@ public class DatabaseOperations {
         }
     }
 
-    public static String getAll() {
+    protected  static String getAll() {
         try {
             Statement getAll = databaseConnection.createStatement();
             ResultSet resultSet = getAll.executeQuery("SELECT * FROM library;");
@@ -43,7 +46,7 @@ public class DatabaseOperations {
         }
     }
 
-    public static String editById(int numberOfParameter, int id, String changedData) {
+    protected static String editById(int numberOfParameter, int id, String changedData) {
         try{
             Statement editById = databaseConnection.createStatement();
             switch(numberOfParameter){
@@ -53,11 +56,11 @@ public class DatabaseOperations {
                 case 4 -> editById.executeUpdate("UPDATE library SET numberOfPages = '"+changedData+"' WHERE id = "+id+";");
                 case 5 -> editById.executeUpdate("UPDATE library SET price = '"+changedData+"' WHERE id = "+id+";");
                 case 6 -> editById.executeUpdate("UPDATE library SET status = '"+changedData+"' WHERE id = "+id+";");
-                default -> System.out.println("Enter a valid ID or element to be edited!");
+                default -> System.out.println("Enter a valid number of element to be edited!");
             }
             return "Successfully edited";
         }catch(SQLException exception){
-            return "Invalid id or data to change";
+            return "Invalid id or data to change!";
         }
     }
 }

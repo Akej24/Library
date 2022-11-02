@@ -1,22 +1,24 @@
-import java.util.Scanner;
+package Options;
+
+import Start.Input;
 
 public class Option1 {
 
-    public static String execute(Scanner scanner){
+    public static String execute(){
 
         System.out.println("Give the title: ");
-        String title = scanner.nextLine();
+        String title = Input.getInput();
         System.out.println("Give the author: ");
-        String author = scanner.nextLine();
+        String author = Input.getInput();
         System.out.println("Give the releaseDate (YYYY-MM-DD): ");
-        String releaseDate = scanner.nextLine();
+        String releaseDate = Input.getInput();
         System.out.println("Give the number of pages: ");
-        int numberOfPages = 0;
-        int price = 0;
+        int numberOfPages;
+        int price;
         try {
-            numberOfPages = Integer.parseInt(scanner.nextLine());
+            numberOfPages = Integer.parseInt(Input.getInput());
             System.out.println("Give the price: ");
-            price = Integer.parseInt(scanner.nextLine());
+            price = Integer.parseInt(Input.getInput());
         }catch(NumberFormatException e){
             return "Invalid input format!";
         }

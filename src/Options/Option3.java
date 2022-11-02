@@ -1,11 +1,13 @@
-import java.util.Scanner;
+package Options;
+
+import Start.Input;
 
 public class Option3 {
-    public static String execute(Scanner scanner){
+    public static String execute(){
         System.out.println("Give the ID of the book to be deleted");
         int id = 0;
         try {
-            id = Integer.parseInt(scanner.nextLine());
+            id = Integer.parseInt(Input.getInput());
         }catch(NumberFormatException e){
             System.out.println("Invalid input format!");
         }

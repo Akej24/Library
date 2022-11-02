@@ -1,8 +1,12 @@
-import java.util.Scanner;
+package Start;
 
-public class Main {
+import Options.Option1;
+import Options.Option2;
+import Options.Option3;
+import Options.Option4;
+
+public class MainProgram {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         boolean isProgramWorking = true;
         while(isProgramWorking){
             System.out.println("""
@@ -14,11 +18,11 @@ public class Main {
                 [4] Show books database
                 [5] Exit the program
                 -------------------------------------""");
-            String choice = scanner.nextLine();
+            String choice = Input.getInput();
             switch(choice){
-                case "1" -> System.out.println(Option1.execute(scanner));
-                case "2" -> System.out.println(Option2.execute(scanner));
-                case "3" -> System.out.println(Option3.execute(scanner));
+                case "1" -> System.out.println(Option1.execute());
+                case "2" -> System.out.println(Option2.execute());
+                case "3" -> System.out.println(Option3.execute());
                 case "4" -> System.out.println(Option4.execute());
                 case "5" -> isProgramWorking = false;
                 default -> System.out.println("Invalid input, try again");
