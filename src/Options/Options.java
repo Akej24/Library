@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Options {
 
-    private final LibraryDao libraryDao = new LibraryDao();
+    private final LibraryDaoImpl libraryDaoImpl = new LibraryDaoImpl();
 
     public boolean execute1(){
         System.out.println("Give the title: ");
@@ -27,7 +27,7 @@ public class Options {
             return false;
         }
 
-        return libraryDao.insertBook(new Library(title, author, releaseDate, numberOfPages, price));
+        return libraryDaoImpl.insertBook(new Library(title, author, releaseDate, numberOfPages, price));
     }
     public boolean execute2(){
         int id;
@@ -52,7 +52,7 @@ public class Options {
         System.out.println("Replace this data with: ");
         String changedData = Input.getInput();
 
-        return libraryDao.updateBook(numberOfParameter, id, changedData);
+        return libraryDaoImpl.updateBook(numberOfParameter, id, changedData);
     }
 
     public boolean execute3(){
@@ -65,10 +65,10 @@ public class Options {
             e.printStackTrace();
             return false;
         }
-        return libraryDao.deleteBook(id);
+        return libraryDaoImpl.deleteBook(id);
     }
 
     public List<Library> execute4(){
-        return libraryDao.getLibrary();
+        return libraryDaoImpl.getLibrary();
     }
 }
