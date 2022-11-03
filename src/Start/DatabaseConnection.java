@@ -5,12 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static Connection connection = null;
+    private static Connection connection;
 
     private DatabaseConnection(){
-        if(connection != null){
-            throw new RuntimeException("Not allowed, use getInstance() method!");
-        }
     }
     public static Connection getConnection(){
         if(connection == null){
@@ -20,8 +17,6 @@ public class DatabaseConnection {
             }catch(SQLException e){
                 System.out.println("Failed to create the database connection");
             }
-        }else{
-            System.out.println("You are already connected to the database!");
         }
         return connection;
     }

@@ -1,9 +1,6 @@
 package Start;
 
-import Options.Option1;
-import Options.Option2;
-import Options.Option3;
-import Options.Option4;
+import Options.Options;
 
 public class MainProgram {
     public static void main(String[] args) {
@@ -19,14 +16,22 @@ public class MainProgram {
                 [5] Exit the program
                 -------------------------------------""");
             String choice = Input.getInput();
+            Options options = new Options();
             switch(choice){
-                case "1" -> System.out.println(Option1.execute());
-                case "2" -> System.out.println(Option2.execute());
-                case "3" -> System.out.println(Option3.execute());
-                case "4" -> System.out.println(Option4.execute());
+                case "1" -> printMessage(options.execute1());
+                case "2" -> printMessage(options.execute2());
+                case "3" -> printMessage(options.execute3());
+                case "4" -> System.out.println(options.execute4());
                 case "5" -> isProgramWorking = false;
                 default -> System.out.println("Invalid input, try again");
             }
+        }
+    }
+    public static void printMessage(boolean status){
+        if (status) {
+            System.out.println("Successfully");
+        } else {
+            System.out.println("Not successfully");
         }
     }
 }
