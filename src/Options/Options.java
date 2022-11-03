@@ -27,7 +27,7 @@ public class Options {
             return false;
         }
 
-        return libraryDao.insertBook(new Library(1, title, author, releaseDate, numberOfPages, price, true  ));
+        return libraryDao.insertBook(new Library(title, author, releaseDate, numberOfPages, price));
     }
     public boolean execute2(){
         int id;

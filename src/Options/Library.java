@@ -2,13 +2,21 @@ package Options;
 
 public class Library{
     private int id;
-    private String title;
-    private String author;
-    private String releaseDate;
-    private int numberOfPages;
-    private int price;
-    private boolean status;
+    private final String title;
+    private final String author;
+    private final String releaseDate;
+    private final int numberOfPages;
+    private final int price;
+    private final boolean status;
 
+    public Library(String title, String author, String releaseDate, int numberOfPages, int price) {
+        this.title = title;
+        this.author = author;
+        this.releaseDate = releaseDate;
+        this.numberOfPages = numberOfPages;
+        this.price = price;
+        this.status = true;
+    }
     public Library(int id, String title, String author, String releaseDate, int numberOfPages, int price, boolean status) {
         this.id = id;
         this.title = title;
@@ -17,10 +25,6 @@ public class Library{
         this.numberOfPages = numberOfPages;
         this.price = price;
         this.status = status;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTitle() {
@@ -45,5 +49,9 @@ public class Library{
 
     public boolean isStatus() {
         return status;
+    }
+
+    public int getId() {
+        return id;
     }
 }
