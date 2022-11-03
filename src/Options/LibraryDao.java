@@ -13,11 +13,11 @@ public class LibraryDao implements LibraryDaoInterface {
         String sql = "insert into library (title, author, releaseDate, numberOfPages, price) values(?,?,?,?,?)";
         try {
             PreparedStatement insertBookStatement = databaseConnection.prepareStatement(sql);
-            insertBookStatement.setString(1, book.title());
-            insertBookStatement.setString(2, book.author());
-            insertBookStatement.setString(3, book.releaseDate());
-            insertBookStatement.setInt(4, book.numberOfPages());
-            insertBookStatement.setInt(5, book.price());
+            insertBookStatement.setString(1, book.getTitle());
+            insertBookStatement.setString(2, book.getAuthor());
+            insertBookStatement.setString(3, book.getReleaseDate());
+            insertBookStatement.setInt(4, book.getNumberOfPages());
+            insertBookStatement.setInt(5, book.getPrice());
             return insertBookStatement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
