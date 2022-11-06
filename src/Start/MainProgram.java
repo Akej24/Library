@@ -18,10 +18,10 @@ public class MainProgram {
             String choice = Input.getInput();
             Options options = new Options();
             switch(choice){
-                case "1" -> printMessage(options.execute1());
-                case "2" -> printMessage(options.execute2());
-                case "3" -> printMessage(options.execute3());
-                case "4" -> System.out.println(options.execute4());
+                case "1" -> printMessage(options.insertBook());
+                case "2" -> printMessage(options.updateBook());
+                case "3" -> printMessage(options.deleteBook());
+                case "4" -> System.out.println(options.getLibrary());
                 case "5" -> isProgramWorking = false;
                 default -> System.out.println("Invalid input, try again");
             }

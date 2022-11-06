@@ -7,7 +7,7 @@ public class Library{
     private final String releaseDate;
     private final int numberOfPages;
     private final int price;
-    private final boolean status;
+    private boolean status;
 
     public Library(String title, String author, String releaseDate, int numberOfPages, int price) {
         this.title = title;
@@ -15,15 +15,10 @@ public class Library{
         this.releaseDate = releaseDate;
         this.numberOfPages = numberOfPages;
         this.price = price;
-        this.status = true;
     }
     public Library(int id, String title, String author, String releaseDate, int numberOfPages, int price, boolean status) {
+        this(title,author,releaseDate,numberOfPages,price);
         this.id = id;
-        this.title = title;
-        this.author = author;
-        this.releaseDate = releaseDate;
-        this.numberOfPages = numberOfPages;
-        this.price = price;
         this.status = status;
     }
 

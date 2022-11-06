@@ -21,9 +21,8 @@ public class LibraryDaoImpl implements LibraryDao {
             return insertBookStatement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
-            //throw new RuntimeException(e);
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -35,9 +34,8 @@ public class LibraryDaoImpl implements LibraryDao {
             return deleteBookStatement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
-            //throw new RuntimeException(e);
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -56,11 +54,11 @@ public class LibraryDaoImpl implements LibraryDao {
                         resultSet.getInt(6),
                         resultSet.getBoolean(7)));
             }
+            return libraryList;
         } catch (SQLException e) {
             e.printStackTrace();
-            //throw new RuntimeException(e);
+            return null;
         }
-        return libraryList;
     }
 
     @Override
@@ -79,11 +77,11 @@ public class LibraryDaoImpl implements LibraryDao {
                     resultSet.getInt(6),
                     resultSet.getBoolean(7));
             }
+            return null;
         }catch(SQLException e){
-                e.printStackTrace();
-                //throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -108,8 +106,7 @@ public class LibraryDaoImpl implements LibraryDao {
             return updateBookStatement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
-            //throw new RuntimeException(e);
+            return false;
         }
-        return false;
     }
 }

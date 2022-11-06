@@ -7,7 +7,7 @@ public class Options {
 
     private final LibraryDaoImpl libraryDaoImpl = new LibraryDaoImpl();
 
-    public boolean execute1(){
+    public boolean insertBook(){
         System.out.println("Give the title: ");
         String title = Input.getInput();
         System.out.println("Give the author: ");
@@ -15,26 +15,20 @@ public class Options {
         System.out.println("Give the releaseDate (YYYY-MM-DD): ");
         String releaseDate = Input.getInput();
         System.out.println("Give the number of pages: ");
-        int numberOfPages;
-        int price;
         try {
-            numberOfPages = Integer.parseInt(Input.getInput());
+            int numberOfPages = Integer.parseInt(Input.getInput());
             System.out.println("Give the price: ");
-            price = Integer.parseInt(Input.getInput());
+            int price = Integer.parseInt(Input.getInput());
+            return libraryDaoImpl.insertBook(new Library(title, author, releaseDate, numberOfPages, price));
         }catch(NumberFormatException e){
-            System.out.println("Invalid input!");
-            e.printStackTrace();
-            return false;
+            return printInvalidInput("Invalid input!", e);
         }
 
-        return libraryDaoImpl.insertBook(new Library(title, author, releaseDate, numberOfPages, price));
     }
-    public boolean execute2(){
-        int id;
-        int numberOfParameter;
+    public boolean updateBook(){
         try {
             System.out.println("Give the ID of the book to be edited: ");
-            id = Integer.parseInt(Input.getInput());
+            int id = Integer.parseInt(Input.getInput());
             System.out.println("""
                     Give the number of the element to be edited:
                     [1] Title
@@ -43,32 +37,32 @@ public class Options {
                     [4] NumberOfPages
                     [5] Price
                     [6] Status""");
-            numberOfParameter = Integer.parseInt(Input.getInput());
+            int numberOfParameter = Integer.parseInt(Input.getInput());
+            System.out.println("Replace this data with: ");
+            String changedData = Input.getInput();
+            return libraryDaoImpl.updateBook(numberOfParameter, id, changedData);
         }catch(NumberFormatException e){
-            System.out.println("Invalid input!");
-            e.printStackTrace();
-            return false;
+            return printInvalidInput("Invalid input!", e);
         }
-        System.out.println("Replace this data with: ");
-        String changedData = Input.getInput();
-
-        return libraryDaoImpl.updateBook(numberOfParameter, id, changedData);
     }
 
-    public boolean execute3(){
+    public boolean deleteBook(){
         System.out.println("Give the ID of the book to be deleted");
-        int id;
         try {
-            id = Integer.parseInt(Input.getInput());
+            int id = Integer.parseInt(Input.getInput());
+            return libraryDaoImpl.deleteBook(id);
         }catch(NumberFormatException e){
-            System.out.println("Invalid input format!");
-            e.printStackTrace();
-            return false;
+            return printInvalidInput("Invalid input format!", e);
         }
-        return libraryDaoImpl.deleteBook(id);
     }
 
-    public List<Library> execute4(){
+    public List<Library> getLibrary(){
         return libraryDaoImpl.getLibrary();
+    }
+
+    private static boolean printInvalidInput(String x, NumberFormatException e) {
+        System.out.println(x);
+        e.printStackTrace();
+        return false;
     }
 }
